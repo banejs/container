@@ -1,0 +1,56 @@
+{
+  "name": "@banejs/container",
+  "version": "1.0.0-beta.0",
+  "description": "BaneJS Inversion of Control Container",
+  "scripts": {
+    "test": "npm run type-check && npm run tslint && npm run jest",
+    "type-check": "tsc --noEmit",
+    "tslint": "tslint --project tsconfig.json --format stylish",
+    "jest": "jest --coverage --detectOpenHandles",
+    "build": "npm run build:clean && npm run build:types && npm run build:js",
+    "build:clean": "rm -rf ./build",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:js": "babel src --out-dir build --extensions \".ts,.tsx\"",
+    "github": "npm run github:tag && npm run github:push",
+    "github:tag": "git tag v$npm_package_version",
+    "github:push": "git push --tags",
+    "prepublish-package": "npm run test && npm run build && npm run prepublish-package:copy && npm run github",
+    "prepublish-package:copy": "cp ./package.json README.md LICENSE build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/banejs/container.git"
+  },
+  "keywords": [
+    "banejs",
+    "container",
+    "inversion of control",
+    "ioc",
+    "typescript"
+  ],
+  "author": "Anton Drobot",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/banejs/container/issues"
+  },
+  "homepage": "https://github.com/banejs/container#readme",
+  "devDependencies": {
+    "@babel/cli": "~7.1.5",
+    "@babel/core": "~7.1.5",
+    "@babel/plugin-proposal-class-properties": "~7.1.0",
+    "@babel/plugin-proposal-object-rest-spread": "~7.0.0",
+    "@babel/preset-env": "~7.1.5",
+    "@babel/preset-typescript": "~7.1.0",
+    "@types/koa": "~2.0.46",
+    "@types/lodash": "~4.14.118",
+    "@types/node": "~10.12.3",
+    "babel-core": "~7.0.0-bridge.0",
+    "babel-jest": "~23.6.0",
+    "jest": "~23.6.0",
+    "tslint": "~5.11.0",
+    "typescript": "~3.1.6"
+  },
+  "dependencies": {
+    "@banejs/exceptions": "^1.0.0-beta.0"
+  }
+}
