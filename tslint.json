@@ -2,6 +2,13 @@
     "defaultSeverity": "error",
     "extends": [],
     "jsRules": {},
+    "linterOptions": {
+        "exclude": [
+            "node_modules/**/*",
+            "coverage/**/*",
+            "build/**/*"
+        ]
+    },
     "rules": {
         // TypeScript Specific
 
@@ -88,6 +95,7 @@
         "ban-comma-operator": true,
         "curly": true,
         "forin": true,
+        "function-constructor": true,
         // "import-blacklist": no sensible default
         "label-position": true,
         "no-arg": true,
@@ -103,7 +111,7 @@
             "check-parameters"
         ],
         "no-dynamic-delete": true,
-        "no-empty": true,
+        "no-empty": false,
         "no-eval": true,
         "no-floating-promises": true,
         "no-for-in-array": true,
@@ -140,6 +148,7 @@
         "strict-type-predicates": false,
         "switch-default": true,
         "triple-equals": true,
+        "unnecessary-constructor": true,
         "use-default-type-parameter": true,
         "use-isnan": true,
 
@@ -163,6 +172,7 @@
         "max-file-line-count": false,
         "max-line-length": false,
         "no-default-export": false,
+        "no-default-import": false,
         "no-duplicate-imports": true,
         "no-irregular-whitespace": true,
         "no-mergeable-namespace": true,
@@ -200,15 +210,17 @@
             "multiline"
         ],
         "binary-expression-operand-order": false,
-        "callable-types": true,
+        "callable-types": false,
         "class-name": true,
         "comment-format": true,
+        "comment-type": false,
         "completed-docs": false,
         // "file-header": No sensible default
         "deprecation": true,
         "encoding": true,
         "file-name-casing": false,
         "import-spacing": true,
+        "increment-decrement": false,
         "interface-name": [
             true,
             "never-prefix"
@@ -285,6 +297,7 @@
         ],
         "switch-final-break": true,
         "type-literal-delimiter": true,
+        "unnecessary-bind": true,
         "variable-name": [
             true,
             "ban-keywords",
@@ -298,11 +311,11 @@
             "check-operator",
             "check-module",
             "check-separator",
+            "check-rest-spread",
             "check-type",
             "check-typecast",
-            "check-preblock",
             "check-type-operator",
-            "check-rest-spread"
+            "check-preblock"
         ]
     },
     "rulesDirectory": []
