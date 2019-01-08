@@ -35,22 +35,22 @@
   },
   "homepage": "https://github.com/banejs/container#readme",
   "devDependencies": {
-    "@babel/cli": "~7.1.5",
-    "@babel/core": "~7.1.5",
-    "@babel/plugin-proposal-class-properties": "~7.1.0",
-    "@babel/plugin-proposal-object-rest-spread": "~7.0.0",
-    "@babel/preset-env": "~7.1.5",
+    "@babel/cli": "~7.2.3",
+    "@babel/core": "~7.2.2",
+    "@babel/plugin-proposal-class-properties": "~7.2.3",
+    "@babel/plugin-proposal-object-rest-spread": "~7.2.0",
+    "@babel/preset-env": "~7.2.3",
     "@babel/preset-typescript": "~7.1.0",
-    "@types/koa": "~2.0.46",
-    "@types/lodash": "~4.14.118",
-    "@types/node": "~10.12.3",
+    "@types/koa": "~2.0.48",
+    "@types/lodash": "~4.14.119",
+    "@types/node": "~10.12.18",
     "babel-core": "~7.0.0-bridge.0",
     "babel-jest": "~23.6.0",
     "jest": "~23.6.0",
-    "tslint": "~5.11.0",
-    "typescript": "~3.1.6"
+    "tslint": "~5.12.0",
+    "typescript": "~3.2.2"
   },
   "dependencies": {
-    "@banejs/exceptions": "^1.0.0-beta.0"
+    "@banejs/exceptions": "~1.0.0-beta.2"
   }
 }
