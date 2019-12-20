@@ -3,16 +3,19 @@
   "version": "1.0.0-beta.1",
   "description": "BaneJS Inversion of Control Container",
   "scripts": {
-    "test": "npm run test:type-check && npm run test:tslint && npm run test:jest",
-    "test:type-check": "tsc --noEmit",
-    "test:tslint": "tslint --project tsconfig.json --format stylish",
-    "test:jest": "jest --coverage --detectOpenHandles",
+    "test": "npm run typecheck && npm run tslint && npm run jest",
+    "typecheck": "tsc --noEmit",
+    "tslint": "tslint --project tsconfig.json --format stylish",
+    "jest": "jest --coverage --detectOpenHandles",
+    "release": "npm run test && npm run release:changelog && npm run release:tag && npm run release:push",
+    "release:changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md && git commit -m 'chore(version): changelog for new version' --no-verify",
+    "release:tag": "git tag v$npm_package_version",
+    "release:push": "git push && git push --tags",
     "build": "npm run build:clean && npm run build:types && npm run build:js && npm run build:copy",
     "build:clean": "rm -rf ./build",
     "build:types": "tsc --emitDeclarationOnly",
     "build:js": "babel src --out-dir build --extensions \".ts,.tsx\"",
-    "build:copy": "cp package.json README.md CHANGELOG.md LICENSE build",
-    "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"
+    "build:copy": "cp ./package.json README.md CHANGELOG.md LICENSE build"
   },
   "repository": {
     "type": "git",
