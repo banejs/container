@@ -1,3 +1,7 @@
+/* tslint:disable:max-classes-per-file */
+
+import ContainerInterface from '../ContainerInterface';
+
 import Container from '../Container';
 import NotFoundException from '../Exceptions/NotFoundException';
 import ContainerException from '../Exceptions/ContainerException';
@@ -8,7 +12,7 @@ describe('Container', () => {
     class B {}
 
     class C {
-        constructor(a, b) {
+        public constructor(a: any, b: any) {
             if (!(a instanceof A) || !(b instanceof B)) {
                 throw new Error();
             }
@@ -16,20 +20,20 @@ describe('Container', () => {
     }
 
     class ThrowableClass {
-        constructor() {
+        public constructor() {
             throw new Error('Sample Error');
         }
     }
 
     class ThrowableClassWithoutMessage {
-        constructor() {
+        public constructor() {
             throw new Error();
         }
     }
 
     describe('#bind(id, creator)', () => {
         test('should create binding', () => {
-            const container = new Container();
+            const container: ContainerInterface = new Container();
 
             container.bind('A', () => new A());
 
@@ -39,7 +43,7 @@ describe('Container', () => {
 
     describe('#singleton(id, creator)', () => {
         test('should create singleton', () => {
-            const container = new Container();
+            const container: ContainerInterface = new Container();
 
             container.singleton('A', () => new A());
 
@@ -49,9 +53,9 @@ describe('Container', () => {
 
     describe('#factory(id, creator)', () => {
         test('should create factory', () => {
-            const container = new Container();
+            const container: ContainerInterface = new Container();
 
-            container.factory('A', () => () => new A());
+            container.factory('A', () => (): A => new A());
 
             expect(container.has('A')).toBe(true);
         });
@@ -59,7 +63,7 @@ describe('Container', () => {
 
     describe('#constant(id, creator)', () => {
         test('should create constant', () => {
-            const container = new Container();
+            const container: ContainerInterface = new Container();
 
             container.constant('A', () => 'A_CONSTANT');
 
@@ -69,7 +73,7 @@ describe('Container', () => {
 
     describe('#has(id)', () => {
         test('should return correct values', () => {
-            const container = new Container();
+            const container: ContainerInterface = new Container();
 
             container.bind('A', () => new A());
 
@@ -80,7 +84,7 @@ describe('Container', () => {
 
     describe('#alias(id)', () => {
         test('should create alias', () => {
-            const container = new Container();
+            const container: ContainerInterface = new Container();
 
             container.bind('A', () => new A());
             container.alias('A', 'A_alias');
@@ -91,7 +95,7 @@ describe('Container', () => {
 
     describe('#get(id)', () => {
         test('should resolve binding', () => {
-            const container = new Container();
+            const container: ContainerInterface = new Container();
 
             container.bind('A', () => new A());
 
@@ -99,27 +103,27 @@ describe('Container', () => {
         });
 
         test('should resolve binding with dependencies', () => {
-            const container = new Container();
+            const container: ContainerInterface = new Container();
 
             container.bind('A', () => new A());
             container.bind('B', () => new B());
-            container.bind('C', (containerInstance) => Reflect.construct(C, [containerInstance.get('A'), containerInstance.get('B')]));
+            container.bind('C', (containerInstance: ContainerInterface) => Reflect.construct(C, [containerInstance.get('A'), containerInstance.get('B')]));
         });
 
         test('should resolve singleton', () => {
-            const container = new Container();
+            const container: ContainerInterface = new Container();
 
             container.singleton('A', () => new A());
 
-            const AInstance = container.get('A');
+            const AInstance: A = container.get('A');
 
             expect(AInstance).toBeInstanceOf(A);
             expect(container.get('A')).toBe(AInstance);
         });
 
         test('should resolve factory', () => {
-            const container = new Container();
-            const aFactory = () => new A();
+            const container: ContainerInterface = new Container();
+            const aFactory: () => A = (): A => new A();
 
             container.factory('A', () => aFactory);
 
@@ -127,8 +131,8 @@ describe('Container', () => {
         });
 
         test('should resolve constant', () => {
-            const container = new Container();
-            const value = 'CONSTANT_VALUE';
+            const container: ContainerInterface = new Container();
+            const value: string = 'CONSTANT_VALUE';
 
             container.constant('CONST', value);
 
@@ -136,7 +140,7 @@ describe('Container', () => {
         });
 
         test('should throw NotFoundException', () => {
-            const container = new Container();
+            const container: ContainerInterface = new Container();
 
             expect(() => {
                 container.get('A');
@@ -144,7 +148,7 @@ describe('Container', () => {
         });
 
         test('should throw ContainerException', () => {
-            const container = new Container();
+            const container: ContainerInterface = new Container();
 
             container.bind('ThrowableClass', () => new ThrowableClass());
 
@@ -154,7 +158,7 @@ describe('Container', () => {
         });
 
         test('should throw ContainerException without message', () => {
-            const container = new Container();
+            const container: ContainerInterface = new Container();
 
             container.bind('ThrowableClassWithoutMessage', () => new ThrowableClassWithoutMessage());
 
