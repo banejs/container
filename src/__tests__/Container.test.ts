@@ -1,6 +1,6 @@
 /* tslint:disable:max-classes-per-file */
 
-import ContainerInterface from '../ContainerInterface';
+import ContainerInterface from '../types/ContainerInterface';
 
 import Container from '../Container';
 import NotFoundException from '../Exceptions/NotFoundException';

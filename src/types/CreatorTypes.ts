@@ -1,4 +1,4 @@
-import ContainerInterface from '../ContainerInterface';
+import ContainerInterface from './ContainerInterface';
 
 export type DefaultCreatorType = (context: ContainerInterface) => any;
 export type FactoryCreatorType = (context: ContainerInterface) => (...args: Array<any>) => any;

@@ -1,4 +1,4 @@
-import { CreatorType, DefaultCreatorType, FactoryCreatorType, ConstantCreatorType } from './Types/CreatorTypes';
+import { CreatorType, DefaultCreatorType, FactoryCreatorType, ConstantCreatorType } from './CreatorTypes';
 
 export default interface ContainerInterface {
     /**

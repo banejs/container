@@ -1,4 +1,4 @@
-import ExceptionInterface from '@banejs/exceptions/ExceptionInterface';
+import ExceptionInterface from '@banejs/exceptions/types/ExceptionInterface';
 
 /**
  * Base interface representing a generic exception in a container.

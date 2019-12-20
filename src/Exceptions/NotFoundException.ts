@@ -1,4 +1,4 @@
-import ContainerExceptionInterface from './ContainerExceptionInterface';
+import ContainerExceptionInterface from '../types/ContainerExceptionInterface';
 
 import ContainerException from './ContainerException';
 

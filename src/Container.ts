@@ -1,6 +1,6 @@
-import ContainerInterface from './ContainerInterface';
-import { CreatorType, DefaultCreatorType, FactoryCreatorType, ConstantCreatorType } from './Types/CreatorTypes';
-import { BindingType } from './Types/BindingType';
+import ContainerInterface from './types/ContainerInterface';
+import { CreatorType, DefaultCreatorType, FactoryCreatorType, ConstantCreatorType } from './types/CreatorTypes';
+import { BindingType } from './types/BindingType';
 
 import NotFoundException from './Exceptions/NotFoundException';
 import ContainerException from './Exceptions/ContainerException';
