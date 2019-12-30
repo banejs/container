@@ -1,6 +1,6 @@
-import ExceptionInterface from '@banejs/exceptions/types/ExceptionInterface';
+import IException from '@banejs/exceptions/types/IException';
 
 /**
  * Base interface representing a generic exception in a container.
  */
-export default interface IContainerException extends ExceptionInterface {}
+export default interface IContainerException extends IException {}

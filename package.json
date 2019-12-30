@@ -41,19 +41,18 @@
     "@babel/plugin-proposal-object-rest-spread": "~7.7.7",
     "@babel/preset-env": "~7.7.7",
     "@babel/preset-typescript": "~7.7.7",
-    "@types/jest": "~24.0.24",
+    "@types/jest": "~24.0.25",
     "@types/koa": "~2.11.0",
     "@types/lodash": "~4.14.149",
-    "@types/node": "~12.12.21",
-    "babel-core": "~7.0.0-bridge.0",
+    "@types/node": "~12.12.22",
     "babel-jest": "~24.9.0",
     "conventional-changelog-cli": "~2.0.31",
     "husky": "~3.1.0",
     "jest": "~24.9.0",
     "tslint": "~5.20.1",
-    "typescript": "~3.7.3"
+    "typescript": "~3.7.4"
   },
   "dependencies": {
-    "@banejs/exceptions": "~1.0.0"
+    "@banejs/exceptions": "~1.1.0"
   }
 }
