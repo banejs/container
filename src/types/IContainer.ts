@@ -1,11 +1,11 @@
 import { CreatorType, DefaultCreatorType, FactoryCreatorType, ConstantCreatorType } from './CreatorTypes';
 
-export default interface ContainerInterface {
+export default interface IContainer {
     /**
      * Finds an entry of the container by its identifier and returns it.
      *
-     * @throws {NotFoundExceptionInterface} - No entry was found for **this** identifier.
-     * @throws {ContainerExceptionInterface} - Error while retrieving the entry.
+     * @throws {INotFoundException} - No entry was found for **this** identifier.
+     * @throws {IContainerException} - Error while retrieving the entry.
      *
      * @param {string} id - Identifier of the entry to look for.
      *

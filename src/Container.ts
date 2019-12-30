@@ -1,4 +1,4 @@
-import ContainerInterface from './types/ContainerInterface';
+import IContainer from './types/IContainer';
 import { CreatorType, DefaultCreatorType, FactoryCreatorType, ConstantCreatorType } from './types/CreatorTypes';
 import { BindingType } from './types/BindingType';
 
@@ -10,7 +10,7 @@ import ContainerException from './Exceptions/ContainerException';
  *
  * @author Anton Drobot
  */
-export default class Container implements ContainerInterface {
+export default class Container implements IContainer {
     /**
      * The container's bindings.
      *

@@ -223,7 +223,7 @@
         "increment-decrement": false,
         "interface-name": [
             true,
-            "never-prefix"
+            "always-prefix"
         ],
         "interface-over-type-literal": false,
         "jsdoc-format": [

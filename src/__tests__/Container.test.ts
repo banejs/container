@@ -1,6 +1,6 @@
 /* tslint:disable:max-classes-per-file */
 
-import ContainerInterface from '../types/ContainerInterface';
+import IContainer from '../types/IContainer';
 
 import Container from '../Container';
 import NotFoundException from '../Exceptions/NotFoundException';
@@ -33,7 +33,7 @@ describe('Container', () => {
 
     describe('#bind(id, creator)', () => {
         test('should create binding', () => {
-            const container: ContainerInterface = new Container();
+            const container: IContainer = new Container();
 
             container.bind('A', () => new A());
 
@@ -43,7 +43,7 @@ describe('Container', () => {
 
     describe('#singleton(id, creator)', () => {
         test('should create singleton', () => {
-            const container: ContainerInterface = new Container();
+            const container: IContainer = new Container();
 
             container.singleton('A', () => new A());
 
@@ -53,7 +53,7 @@ describe('Container', () => {
 
     describe('#factory(id, creator)', () => {
         test('should create factory', () => {
-            const container: ContainerInterface = new Container();
+            const container: IContainer = new Container();
 
             container.factory('A', () => (): A => new A());
 
@@ -63,7 +63,7 @@ describe('Container', () => {
 
     describe('#constant(id, creator)', () => {
         test('should create constant', () => {
-            const container: ContainerInterface = new Container();
+            const container: IContainer = new Container();
 
             container.constant('A', () => 'A_CONSTANT');
 
@@ -73,7 +73,7 @@ describe('Container', () => {
 
     describe('#has(id)', () => {
         test('should return correct values', () => {
-            const container: ContainerInterface = new Container();
+            const container: IContainer = new Container();
 
             container.bind('A', () => new A());
 
@@ -84,7 +84,7 @@ describe('Container', () => {
 
     describe('#alias(id)', () => {
         test('should create alias', () => {
-            const container: ContainerInterface = new Container();
+            const container: IContainer = new Container();
 
             container.bind('A', () => new A());
             container.alias('A', 'A_alias');
@@ -95,7 +95,7 @@ describe('Container', () => {
 
     describe('#get(id)', () => {
         test('should resolve binding', () => {
-            const container: ContainerInterface = new Container();
+            const container: IContainer = new Container();
 
             container.bind('A', () => new A());
 
@@ -103,15 +103,15 @@ describe('Container', () => {
         });
 
         test('should resolve binding with dependencies', () => {
-            const container: ContainerInterface = new Container();
+            const container: IContainer = new Container();
 
             container.bind('A', () => new A());
             container.bind('B', () => new B());
-            container.bind('C', (containerInstance: ContainerInterface) => Reflect.construct(C, [containerInstance.get('A'), containerInstance.get('B')]));
+            container.bind('C', (containerInstance: IContainer) => Reflect.construct(C, [containerInstance.get('A'), containerInstance.get('B')]));
         });
 
         test('should resolve singleton', () => {
-            const container: ContainerInterface = new Container();
+            const container: IContainer = new Container();
 
             container.singleton('A', () => new A());
 
@@ -122,7 +122,7 @@ describe('Container', () => {
         });
 
         test('should resolve factory', () => {
-            const container: ContainerInterface = new Container();
+            const container: IContainer = new Container();
             const aFactory: () => A = (): A => new A();
 
             container.factory('A', () => aFactory);
@@ -131,7 +131,7 @@ describe('Container', () => {
         });
 
         test('should resolve constant', () => {
-            const container: ContainerInterface = new Container();
+            const container: IContainer = new Container();
             const value: string = 'CONSTANT_VALUE';
 
             container.constant('CONST', value);
@@ -140,7 +140,7 @@ describe('Container', () => {
         });
 
         test('should throw NotFoundException', () => {
-            const container: ContainerInterface = new Container();
+            const container: IContainer = new Container();
 
             expect(() => {
                 container.get('A');
@@ -148,7 +148,7 @@ describe('Container', () => {
         });
 
         test('should throw ContainerException', () => {
-            const container: ContainerInterface = new Container();
+            const container: IContainer = new Container();
 
             container.bind('ThrowableClass', () => new ThrowableClass());
 
@@ -158,7 +158,7 @@ describe('Container', () => {
         });
 
         test('should throw ContainerException without message', () => {
-            const container: ContainerInterface = new Container();
+            const container: IContainer = new Container();
 
             container.bind('ThrowableClassWithoutMessage', () => new ThrowableClassWithoutMessage());
 

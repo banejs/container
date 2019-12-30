@@ -1,11 +1,11 @@
 import Exception from '@banejs/exceptions/Exception';
 
-import ContainerExceptionInterface from '../types/ContainerExceptionInterface';
+import IContainerException from '../types/IContainerException';
 
 /**
  * Base interface representing a generic exception in a container.
  */
-export default class ContainerException extends Exception implements ContainerExceptionInterface {
+export default class ContainerException extends Exception implements IContainerException {
     public name: string = 'ContainerException';
 
     public constructor(message?: string, code: string = 'E_CONTAINER_EXCEPTION') {

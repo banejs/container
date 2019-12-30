@@ -1,11 +1,11 @@
-import ContainerExceptionInterface from '../types/ContainerExceptionInterface';
+import IContainerException from '../types/IContainerException';
 
 import ContainerException from './ContainerException';
 
 /**
  * No entry was found in the container.
  */
-export default class NotFoundException extends ContainerException implements ContainerExceptionInterface {
+export default class NotFoundException extends ContainerException implements IContainerException {
     public name: string = 'NotFoundException';
 
     public constructor() {
