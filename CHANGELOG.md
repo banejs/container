@@ -1,3 +1,12 @@
+# [1.2.0](https://github.com/banejs/container/compare/v1.1.0...v1.2.0) (2020-01-15)
+
+
+### Features
+
+* **container:** change constant resolving ([168cfa2](https://github.com/banejs/container/commit/168cfa27321a2687a7041d9c3b5af3df34b22378))
+
+
+
 # [1.1.0](https://github.com/banejs/container/compare/v1.0.0...v1.1.0) (2019-12-30)
 
 
