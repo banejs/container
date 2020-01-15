@@ -134,7 +134,7 @@ describe('Container', () => {
             const container: IContainer = new Container();
             const value: string = 'CONSTANT_VALUE';
 
-            container.constant('CONST', value);
+            container.constant('CONST', () => value);
 
             expect(container.get('CONST')).toBe(value);
         });

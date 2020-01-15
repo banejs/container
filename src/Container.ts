@@ -65,10 +65,6 @@ export default class Container implements IContainer {
      */
     private build(binding: BindingType): any {
         try {
-            if (binding.constant) {
-                return binding.creator;
-            }
-
             return Reflect.apply(binding.creator, undefined, [this]);
         } catch (error) {
             throw new ContainerException(error.message);
