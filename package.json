@@ -1,6 +1,6 @@
 {
   "name": "@banejs/container",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "BaneJS Inversion of Control Container",
   "scripts": {
     "test": "npm run typecheck && npm run tslint && npm run jest",

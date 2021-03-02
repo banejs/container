@@ -1,3 +1,12 @@
+# [1.3.0](https://github.com/banejs/container/compare/v1.2.0...v1.3.0) (2021-03-02)
+
+
+### Features
+
+* **types:** add generic types ([996e858](https://github.com/banejs/container/commit/996e8580e69fb2a26858552b88eee8b05abe3128))
+
+
+
 # [1.2.0](https://github.com/banejs/container/compare/v1.1.0...v1.2.0) (2020-01-15)
 
 
