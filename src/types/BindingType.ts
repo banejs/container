@@ -1,7 +1,7 @@
 import { CreatorType } from './CreatorTypes';
 
-export type BindingType = {
-    creator: CreatorType;
+export type BindingType<T = any> = {
+    creator: CreatorType<T>;
     shared: boolean;
     constant: boolean;
 };

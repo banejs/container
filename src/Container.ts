@@ -48,7 +48,7 @@ export default class Container implements IContainer {
      *
      * @private
      */
-    private baseBind(id: string, creator: CreatorType, { shared = false, constant = false }: { shared?: boolean; constant?: boolean } = {}): void {
+    private baseBind<T>(id: string, creator: CreatorType<T>, { shared = false, constant = false }: { shared?: boolean; constant?: boolean } = {}): void {
         this.bindings.set(id, { creator, shared, constant });
     }
 
@@ -63,7 +63,7 @@ export default class Container implements IContainer {
      *
      * @private
      */
-    private build(binding: BindingType): any {
+    private build<T>(binding: BindingType<T>): T {
         try {
             return Reflect.apply(binding.creator, undefined, [this]);
         } catch (error) {
@@ -82,20 +82,20 @@ export default class Container implements IContainer {
      *
      * @private
      */
-    private resolve(id: string): any {
+    private resolve<T>(id: string): T {
         const aliasOrId: string = this.aliases.get(id) || id;
 
         if (this.instances.has(aliasOrId)) {
             return this.instances.get(aliasOrId);
         }
 
-        const binding: BindingType | void = this.bindings.get(aliasOrId);
+        const binding: BindingType<T> | void = this.bindings.get(aliasOrId);
 
         if (!binding) {
             throw new NotFoundException();
         }
 
-        const object: any = this.build(binding);
+        const object: T = this.build(binding);
 
         if (binding.shared) {
             this.instances.set(aliasOrId, object);
@@ -111,8 +111,8 @@ export default class Container implements IContainer {
      *
      * @return {*}
      */
-    public get(id: string): any {
-        return this.resolve(id);
+    public get<T = any>(id: string): T {
+        return this.resolve<T>(id);
     }
 
     /**
@@ -135,7 +135,7 @@ export default class Container implements IContainer {
      * @param {string} id
      * @param {CreatorType} creator
      */
-    public bind(id: string, creator: CreatorType): void {
+    public bind<T = any>(id: string, creator: CreatorType<T>): void {
         this.baseBind(id, creator);
     }
 
@@ -145,7 +145,7 @@ export default class Container implements IContainer {
      * @param {string} id
      * @param {DefaultCreatorType} creator
      */
-    public singleton(id: string, creator: DefaultCreatorType): void {
+    public singleton<T = any>(id: string, creator: DefaultCreatorType<T>): void {
         this.baseBind(id, creator, { shared: true });
     }
 
@@ -155,7 +155,7 @@ export default class Container implements IContainer {
      * @param {string} id
      * @param {FactoryCreatorType} creator
      */
-    public factory(id: string, creator: FactoryCreatorType): void {
+    public factory<T = any>(id: string, creator: FactoryCreatorType<T>): void {
         this.baseBind(id, creator);
     }
 
@@ -165,7 +165,7 @@ export default class Container implements IContainer {
      * @param {string} id
      * @param {ConstantCreatorType} constant
      */
-    public constant(id: string, constant: ConstantCreatorType): void {
+    public constant<T = any>(id: string, constant: ConstantCreatorType<T>): void {
         this.baseBind(id, constant, { constant: true });
     }
 

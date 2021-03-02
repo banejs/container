@@ -11,7 +11,7 @@ export default interface IContainer {
      *
      * @return {*}
      */
-    get(id: string): any;
+    get<T = any>(id: string): T;
 
     /**
      * Returns true if the container can return an entry for the given identifier.
@@ -32,7 +32,7 @@ export default interface IContainer {
      * @param {string} id
      * @param {CreatorType} creator
      */
-    bind(id: string, creator: CreatorType): void;
+    bind<T = any>(id: string, creator: CreatorType<T>): void;
 
     /**
      * Binds an abstraction to a singleton.
@@ -40,7 +40,7 @@ export default interface IContainer {
      * @param {string} id
      * @param {DefaultCreatorType} creator
      */
-    singleton(id: string, creator: DefaultCreatorType): void;
+    singleton<T = any>(id: string, creator: DefaultCreatorType<T>): void;
 
     /**
      * Binds an abstraction to a factory.
@@ -48,7 +48,7 @@ export default interface IContainer {
      * @param {string} id
      * @param {FactoryCreatorType} creator
      */
-    factory(id: string, creator: FactoryCreatorType): void;
+    factory<T = any>(id: string, creator: FactoryCreatorType<T>): void;
 
     /**
      * Binds an abstraction to a constant value
@@ -56,7 +56,7 @@ export default interface IContainer {
      * @param {string} id
      * @param {ConstantCreatorType} constant
      */
-    constant(id: string, constant: ConstantCreatorType): void;
+    constant<T = any>(id: string, constant: ConstantCreatorType<T>): void;
 
     /**
      * Alias a type to a different name.
